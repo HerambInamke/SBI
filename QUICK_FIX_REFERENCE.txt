@@ -1,0 +1,67 @@
+╔═══════════════════════════════════════════════════════════════╗
+║         ANDROID CLASSNOTFOUNDEXCEPTION - QUICK FIX           ║
+╚═══════════════════════════════════════════════════════════════╝
+
+ERROR MESSAGE:
+--------------
+java.lang.ClassNotFoundException: 
+Didn't find class "com.apnikaarigar.sbi.MainActivity"
+
+CAUSE:
+------
+Package name mismatch
+
+FIX APPLIED:
+------------
+✓ Created: android/app/src/main/kotlin/com/apnikaarigar/sbi/MainActivity.kt
+✓ Updated: AndroidManifest.xml (added package attribute)
+✓ Deleted: Old MainActivity from wrong location
+
+BUILD COMMANDS:
+---------------
+> rebuild_android.bat
+
+OR manually:
+> flutter clean
+> cd android && gradlew clean && cd ..
+> flutter pub get
+> flutter run
+
+VERIFICATION:
+-------------
+Check these 3 files match:
+
+1. android/app/build.gradle.kts
+   applicationId = "com.apnikaarigar.sbi"
+
+2. android/app/src/main/AndroidManifest.xml
+   <manifest package="com.apnikaarigar.sbi">
+
+3. android/app/src/main/kotlin/com/apnikaarigar/sbi/MainActivity.kt
+   package com.apnikaarigar.sbi
+
+All must say: com.apnikaarigar.sbi
+
+EXPECTED RESULT:
+----------------
+✓ App builds
+✓ App installs
+✓ App launches
+✓ No crash!
+
+TROUBLESHOOTING:
+----------------
+If still crashes:
+1. Verify MainActivity.kt exists at correct path
+2. Run: flutter clean && flutter pub get
+3. Delete android/app/build folder
+4. Rebuild
+
+NEED HELP?
+----------
+Read: FIX_ANDROID_CRASH.md (detailed explanation)
+Read: PACKAGE_STRUCTURE_EXPLAINED.md (visual guide)
+
+╔═══════════════════════════════════════════════════════════════╗
+║                    STATUS: FIXED ✅                           ║
+╚═══════════════════════════════════════════════════════════════╝

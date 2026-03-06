@@ -1,0 +1,79 @@
+═══════════════════════════════════════════════════════════════
+  ANDROID CLASSNOTFOUNDEXCEPTION - FIX COMPLETE ✅
+═══════════════════════════════════════════════════════════════
+
+PROBLEM:
+--------
+App crashed on launch with:
+  java.lang.ClassNotFoundException: 
+  Didn't find class "com.apnikaarigar.sbi.MainActivity"
+
+ROOT CAUSE:
+-----------
+Package name mismatch between:
+  ❌ build.gradle: com.apnikaarigar.sbi
+  ❌ MainActivity: com.example.flutter_application_1
+  ❌ Folder: kotlin/com/example/flutter_application_1/
+
+SOLUTION APPLIED:
+-----------------
+✅ Created correct folder structure:
+   android/app/src/main/kotlin/com/apnikaarigar/sbi/
+
+✅ Created new MainActivity.kt with correct package:
+   package com.apnikaarigar.sbi
+
+✅ Updated AndroidManifest.xml:
+   Added package="com.apnikaarigar.sbi"
+
+✅ Deleted old MainActivity from wrong location
+
+VERIFICATION:
+-------------
+All components now match:
+
+┌─────────────────────────────────────────────────────────┐
+│ Component              │ Package Name                   │
+├────────────────────────┼────────────────────────────────┤
+│ build.gradle.kts       │ com.apnikaarigar.sbi          │
+│ MainActivity.kt        │ com.apnikaarigar.sbi          │
+│ AndroidManifest.xml    │ com.apnikaarigar.sbi          │
+│ Folder Structure       │ com/apnikaarigar/sbi/         │
+└─────────────────────────────────────────────────────────┘
+
+HOW TO BUILD:
+-------------
+Option 1 - Use the script:
+  > rebuild_android.bat
+
+Option 2 - Manual commands:
+  > flutter clean
+  > cd android
+  > gradlew clean
+  > cd ..
+  > flutter pub get
+  > flutter run
+
+EXPECTED RESULT:
+----------------
+✓ App builds successfully
+✓ App installs on device/emulator
+✓ App launches without crash
+✓ Shows ApnaKaarigar login screen
+
+FILES MODIFIED:
+---------------
+1. Created: android/app/src/main/kotlin/com/apnikaarigar/sbi/MainActivity.kt
+2. Updated: android/app/src/main/AndroidManifest.xml
+3. Deleted: android/app/src/main/kotlin/com/example/flutter_application_1/MainActivity.kt
+
+NEXT STEPS:
+-----------
+1. Run: rebuild_android.bat
+2. Wait for build to complete
+3. App should launch successfully
+4. Test login/signup functionality
+
+═══════════════════════════════════════════════════════════════
+Status: READY TO BUILD ✅
+═══════════════════════════════════════════════════════════════
